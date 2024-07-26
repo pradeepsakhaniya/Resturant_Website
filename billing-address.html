@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Address</title>
+    <link rel="stylesheet" href="./billing-address.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <h1>Resturant</h1>
+            </div>
+            <ul>
+                <a href="index.html">Home</a>
+                <a id="foods" href="index.html#food">Food</a>
+                <a id="dishes" href="index.html#dishe">Best Dishes</a>
+                <a id="orders" href="index.html#order">Track Order</a>
+                <button id="wishlistBtn" style="margin:10px;">Wishlist (<span id="wishlistCount">0</span>)</button>
+                <button id="cartBtn" style="margin:10px;">Cart (<span id="cartCount">0</span>)</button>
+                <button id="logo" style="margin:10px;">Log In</button>
+            </ul>
+        </nav>
+        <h1>Billing Address</h1>
+        <form id="billingForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required><br>
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required><br>
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" required><br>
+            <label for="zip">Zip Code:</label>
+            <input type="text" id="zip" name="zip" required><br>
+            <button type="submit">Proceed to Payment</button>
+        </form>
+    </div>
+    <script src="common.js"></script>
+    <script>
+        document.getElementById('billingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Save billing info to localStorage
+            const billingInfo = {
+                name: document.getElementById('name').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                zip: document.getElementById('zip').value
+            };
+            localStorage.setItem('billingInfo', JSON.stringify(billingInfo));
+           
+            window.location.href = 'payment.html';
+        });
+    </script>
+</body>
+</html>
